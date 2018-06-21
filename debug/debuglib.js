@@ -1,11 +1,11 @@
-const { PaiGow, PGTile } = require('../src/paigow');
+const { paiGow, PGTile } = require('../src/paigow');
 
-const { setOfTiles } = PaiGow;
+const importedSetOfTiles = paiGow.setOfTiles;
 
-const displaySet = [
+const displayPattSet = [
   [' *             * *', '* ** *         * *'],
   '* ** ** ** ** ** *',
-  '* *            * *',
+  ' *              * ',
   '* ** *      * ** *',
   ' *         * * *  ',
   '* * * * ** * * * *',
@@ -21,8 +21,55 @@ const displaySet = [
   ['* ** *          * ', '* *        * * *  '],
 ];
 
+const setOfTiles = importedSetOfTiles.map((tile, index) => {
+  const modTile = new PGTile(index);
+  modTile.display = displayPattSet[index];
+  return modTile;
+});
+
+const inputKeysSet = [
+  '3',
+  '12',
+  '2',
+  '8h',
+  '4h',
+  '10h',
+  '6h',
+  '4l',
+  '11',
+  '10l',
+  '7m',
+  '6l',
+  '9',
+  '8l',
+  '7u',
+  '5',
+];
+
+const inputMap = new Map(setOfTiles.map((tile, index) => [inputKeysSet[index], tile]));
+
+function getTile(key) {
+  return inputMap.get(key);
+}
+
+function parseTilesPatt(patt) {
+  return patt.split(' ').reduce(
+    ({ alreadyIn, returnVal }, key) => {
+      const tile = getTile(key);
+      if (alreadyIn.has(tile)) {
+        returnVal.push([tile, 2]);
+      } else {
+        returnVal.push([tile, 1]);
+      }
+      alreadyIn.add(tile);
+      return { alreadyIn, returnVal };
+    },
+    { alreadyIn: new Set(), returnVal: [] },
+  ).returnVal;
+}
+
 const PaiGowDebugLib = {
-  printTiles(list, separate) {
+  printTiles(list, separate = true) {
     const toDisplay = new Array(10).fill('');
 
     function addVerticalTiles(vertList) {
@@ -68,7 +115,7 @@ const PaiGowDebugLib = {
         for (let ii = 0; ii < 3; ii++) {
           toDisplay[base + ii + 1] += `│ ${modStr[ii]}│`;
         }
-        toDisplay[base + 4] += '└──────────────┘  ';
+        toDisplay[base + 4] += '└──────────────┘';
       }
       return toDisplay;
     }
@@ -82,11 +129,11 @@ const PaiGowDebugLib = {
     return toDisplay.join('\r\n');
   },
 
-  setOfTiles: setOfTiles.map((tile, index) => {
-    const modTile = new PGTile(index);
-    modTile.display = displaySet[index];
-    return modTile;
-  }),
+  setOfTiles,
+
+  getTile,
+
+  parseTilesPatt,
 };
 
 module.exports = PaiGowDebugLib;

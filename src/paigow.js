@@ -98,21 +98,23 @@ const setOfTiles = [
   },
 ];
 
-class PaiGow {
-  // constructor() {}
-}
-
 class PGTile {
   constructor(arg) {
     if (typeof arg === 'number') {
-      Object.assign(this, setOfTiles);
+      Object.assign(this, setOfTiles[arg]);
     } else {
       Object.assign(this, arg);
     }
   }
 }
 
-PaiGow.setOfTiles = setOfTiles.map(t => new PGTile(t));
+const paiGow = {
+  houseWay(...tiles) {
+    console.log(tiles);
+  },
 
-module.exports.PaiGow = PaiGow;
+  setOfTiles: setOfTiles.map(t => new PGTile(t)),
+};
+
+module.exports.paiGow = paiGow;
 module.exports.PGTile = PGTile;
