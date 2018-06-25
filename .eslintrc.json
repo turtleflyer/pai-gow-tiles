@@ -4,6 +4,9 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "linebreak-style": ["warn", "windows"],
     "prefer-template": "warn",
-    "no-mixed-operators": "off"
+    "no-mixed-operators": "off",
+    "no-plusplus": "off",
+    "no-restricted-syntax": "off",
+    "max-len": ["warn", 100]
   }
 }
