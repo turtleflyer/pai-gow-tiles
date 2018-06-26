@@ -104,47 +104,61 @@ function getTileByRank(rank) {
   return setOfTiles.find(t => t.rank === rank);
 }
 
-function getHand(tile1, tile2) {
-  if (tile1 === tile2) {
-    return {
-      value: 12,
-      rank: tile1.rank === 0 ? 16 : tile1.rank,
-      highTile: tile1,
-      lowTile: tile2,
-    };
-  }
-
-  let sum = tile1.value + tile2.value;
-  if (sum > 11 || !(tile1.value === 2 || tile2.value === 2)) {
-    sum %= 10;
-  }
-  if (tile1.altValue) {
-    const altSum = (tile1.altValue + tile2.value) % 10;
-    sum = sum > altSum ? sum : altSum;
-  }
-  if (tile2.altValue) {
-    const altSum = (tile1.value + tile2.altValue) % 10;
-    sum = sum > altSum ? sum : altSum;
-  }
-
-  return tile1.rank > tile2.rank
-    ? {
-      value: sum,
-      rank: tile1.rank,
-      highTile: tile1,
-      lowTile: tile2,
+class PGHand {
+  constructor(tile1, tile2) {
+    if (tile1 === tile2) {
+      return {
+        value: 12,
+        rank: tile1.rank === 0 ? 16 : tile1.rank,
+        highTile: tile1,
+        lowTile: tile2,
+      };
     }
-    : {
-      value: sum,
-      rank: tile2.rank,
-      highTile: tile2,
-      lowTile: tile1,
-    };
+
+    let sum = tile1.value + tile2.value;
+    if (sum > 11 || !(tile1.value === 2 || tile2.value === 2)) {
+      sum %= 10;
+    }
+    if (tile1.altValue) {
+      const altSum = (tile1.altValue + tile2.value) % 10;
+      sum = sum > altSum ? sum : altSum;
+    }
+    if (tile2.altValue) {
+      const altSum = (tile1.value + tile2.altValue) % 10;
+      sum = sum > altSum ? sum : altSum;
+    }
+
+    if (tile1.rank > tile2.rank) {
+      Object.assign(this, {
+        value: sum,
+        rank: tile1.rank,
+        highTile: tile1,
+        lowTile: tile2,
+      });
+    } else {
+      Object.assign(this, {
+        value: sum,
+        rank: tile2.rank,
+        highTile: tile2,
+        lowTile: tile1,
+      });
+    }
+  }
+}
+
+function getHand(tile1, tile2) {
+  return new PGHand(tile1, tile2);
 }
 
 function compareHands(hand1, hand2) {
   switch (true) {
-    case hand1.value === hand2.value:
+    case hand1.value > hand2.value:
+      return 1;
+
+    case hand1.value < hand2.value:
+      return -1;
+
+    default:
       switch (true) {
         case hand1.rank > hand2.rank:
           return 1;
@@ -155,18 +169,43 @@ function compareHands(hand1, hand2) {
         default:
           return 0;
       }
+  }
+}
 
-    case hand1.value > hand2.value:
-      return 1;
-
-    default:
-      return -1;
+class PGTotalHand {
+  constructor(hand1, hand2) {
+    const [lowHand, highHand] = [hand1, hand2].sort(compareHands);
+    Object.assign(this, { lowHand, highHand });
   }
 }
 
 function getTotalHand(hand1, hand2) {
-  const [lowHand, highHand] = [hand1, hand2].sort(compareHands);
-  return { lowHand, highHand };
+  return new PGTotalHand(hand1, hand2);
+}
+
+function compareTotalHands(bankerHand, anotherHand) {
+  switch (true) {
+    case anotherHand.lowHand.value === 0:
+    case compareHands(bankerHand.lowHand, anotherHand.lowHand) >= 0:
+      // The comparison of the low hands ends up in favor of the banker
+      switch (true) {
+        case compareHands(bankerHand.highHand, anotherHand.highHand) >= 0:
+          return { win: true };
+
+        default:
+          return { tie: true };
+      }
+
+    default:
+      // The comparison of the low hands does not end up in favor of the banker
+      switch (true) {
+        case compareHands(bankerHand.highHand, anotherHand.highHand) >= 0:
+          return { tie: true };
+
+        default:
+          return { lose: true };
+      }
+  }
 }
 
 function totalValue(totalHand) {
@@ -522,5 +561,6 @@ module.exports.paiGow = {
   getHand,
   compareHands,
   getTotalHand,
+  compareTotalHands,
   houseWay,
 };
