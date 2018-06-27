@@ -251,37 +251,37 @@ function checkMultiplePatt(possibleSolutions, patterns) {
 
 const rules = {
   splitGeeJoon(possibleSolutions) {
-    console.log('Check to split Gee Joon');
+    // console.log('Check to split Gee Joon');
     const index = probe(possibleSolutions, [c => c >= 7, 9], true);
     return possibleSolutions[index >= 0 ? index : 0];
   },
 
   splitTeenDay(possibleSolutions) {
-    console.log('Check to split Teens or Days');
+    // console.log('Check to split Teens or Days');
     const index = checkMultiplePatt(possibleSolutions, [[v => v >= 6, v => v >= 8], [3, 11]]);
     return possibleSolutions[index >= 0 ? index : 0];
   },
 
   splitNines(possibleSolutions) {
-    console.log('Check to split Nines');
+    // console.log('Check to split Nines');
     const index = probe(possibleSolutions, [v => v >= 9, v => v >= 9], true);
     return possibleSolutions[index >= 0 ? index : 0];
   },
 
   splitEights(possibleSolutions) {
-    console.log('Check to split Eights');
+    // console.log('Check to split Eights');
     const index = checkMultiplePatt(possibleSolutions, [[v => v >= 8, v => v >= 8], [7, 9]]);
     return possibleSolutions[index >= 0 ? index : 0];
   },
 
   splitSevens(possibleSolutions) {
-    console.log('Check to split Sevens');
+    // console.log('Check to split Sevens');
     const index = probe(possibleSolutions, [v => v >= 7, v => v >= 9], true);
     return possibleSolutions[index >= 0 ? index : 0];
   },
 
   twoTeensOrDays(possibleSolutions) {
-    console.log('Two Teens or Days');
+    // console.log('Two Teens or Days');
     let index = probe(possibleSolutions, [4, v => v >= 4 && v <= 7], true);
     if (index < 0) {
       index = checkMultiplePatt(possibleSolutions, [[2, 3], [6, 7], [6, 8]]);
@@ -295,7 +295,7 @@ const rules = {
   },
 
   gongWongNine(possibleSolutions) {
-    console.log('Check gong, wong, nine');
+    // console.log('Check gong, wong, nine');
     const index7 = probe(possibleSolutions, ['*', 9], true);
     const index8 = probe(possibleSolutions, ['*', 10], true);
     const index9 = probe(possibleSolutions, ['*', 11], true);
@@ -317,7 +317,7 @@ const rules = {
       probe(possibleSolutions, [7, 9]) === 0 &&
       (possibleSolutions[1].lowHand.rank === 1 && possibleSolutions[1].highHand.rank >= 14)
     ) {
-      console.log('No 8 - 8 with Teen or Day, Gee Joon, 5');
+      // console.log('No 8 - 8 with Teen or Day, Gee Joon, 5');
       return possibleSolutions[0];
     }
     return null;
@@ -329,7 +329,7 @@ const rules = {
       possibleSolutions[0].highHand.lowTile.rank === 1 &&
       possibleSolutions[0].lowHand.lowTile.rank === 0
     ) {
-      console.log('4, 5 and Gee Joon');
+      // console.log('4, 5 and Gee Joon');
       return possibleSolutions[1];
     }
     return null;
@@ -341,7 +341,7 @@ const rules = {
       possibleSolutions[0].highHand.rank === 13 &&
       possibleSolutions[0].lowHand.rank === 8
     ) {
-      console.log('High 8, 10, 11, 7');
+      // console.log('High 8, 10, 11, 7');
       return possibleSolutions[1];
     }
     if (
@@ -349,7 +349,7 @@ const rules = {
       possibleSolutions[0].highHand.rank === 13 &&
       possibleSolutions[0].lowHand.rank === 11
     ) {
-      console.log('High 8, high 10, 11, 6');
+      // console.log('High 8, high 10, 11, 6');
       return possibleSolutions[0];
     }
     return null;
@@ -361,7 +361,7 @@ const rules = {
       possibleSolutions[0].highHand.rank === 10 &&
       possibleSolutions[0].lowHand.rank === 8
     ) {
-      console.log('Two 6, Gee Joon, 11');
+      // console.log('Two 6, Gee Joon, 11');
       return possibleSolutions[0];
     }
     return null;
@@ -373,16 +373,16 @@ const rules = {
       possibleSolutions[0].highHand.rank === 12 &&
       possibleSolutions[0].lowHand.rank === 9
     ) {
-      console.log('Two 4, 9, 5');
+      // console.log('Two 4, 9, 5');
       return possibleSolutions[1];
     }
     return null;
   },
 
   highThree(possibleSolutions) {
-    console.log('High Three');
+    // console.log('High Three');
     if (checkMultiplePatt(possibleSolutions, [[8, 9]]) >= 0) {
-      console.log('8 - 9 or better');
+      // console.log('8 - 9 or better');
       return possibleSolutions.find(sol => sol.highHand.value === 9 && isHigh(sol.highHand));
     }
     const sortedByHigh = possibleSolutions.sort((sol1, sol2) => {
@@ -505,7 +505,7 @@ function houseWay(tiles) {
   // console.log('possibleSolutions: \r\n', possibleSolutions);
 
   if (possibleSolutions.length === 1) {
-    console.log('Only one way');
+    // console.log('Only one way');
     return possibleSolutions[0];
   }
 
@@ -514,7 +514,7 @@ function houseWay(tiles) {
     case first.highHand.value === 12:
       // console.log('Bo');
       if (first.lowHand.value === 12) {
-        console.log('Bo + bo');
+        // console.log('Bo + bo');
         return first;
       }
 
@@ -535,7 +535,7 @@ function houseWay(tiles) {
           return rules.splitSevens(possibleSolutions);
 
         default:
-          console.log('Bo');
+          // console.log('Bo');
           return possibleSolutions[0];
       }
 
