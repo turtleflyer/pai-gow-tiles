@@ -1,11 +1,7 @@
 const {
-  paiGow: {
-    getTile, getTileByRank, getHand, compareHands, getTotalHand, houseWay,
-  },
+  paiGow: { houseWay },
 } = require('../src/paigow');
-const {
-  getTileByKey, parseTilesPatt, getPatt, printTiles, printTwoHands,
-} = require('./debuglib');
+const { parseTilesPatt, printTwoHands } = require('./debuglib');
 
 console.log(printTwoHands(houseWay(parseTilesPatt('5 10h 5 10h'))));
 console.log(printTwoHands(houseWay(parseTilesPatt('3 3 6h 4l'))));
@@ -26,4 +22,3 @@ console.log(printTwoHands(houseWay(parseTilesPatt('4h 4l 9 5'))));
 console.log(printTwoHands(houseWay(parseTilesPatt('3 6l 7m 8h'))));
 console.log(printTwoHands(houseWay(parseTilesPatt('6h 6l 7m 8h'))));
 console.log(printTwoHands(houseWay(parseTilesPatt('6l 7u 10h 4l'))));
-

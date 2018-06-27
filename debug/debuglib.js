@@ -1,7 +1,5 @@
 const {
-  paiGow: {
-    getTile, getTileByRank, getHand, compareHands, getTotalHand, houseWay,
-  },
+  paiGow: { getTile, compareHands },
 } = require('../src/paigow');
 
 // const  = paiGow;
@@ -25,7 +23,24 @@ const displayPattSet = [
   [' *             * *', '* ** *         * *'],
 ];
 
-const inputKeysSet = ['3', '12', '2', '8h', '4h', '10h', '6h', '4l', '11', '10l', '7m', '6l', '9', '8l', '7u', '5'];
+const inputKeysSet = [
+  '3',
+  '12',
+  '2',
+  '8h',
+  '4h',
+  '10h',
+  '6h',
+  '4l',
+  '11',
+  '10l',
+  '7m',
+  '6l',
+  '9',
+  '8l',
+  '7u',
+  '5',
+];
 
 const inputMap = new Map(inputKeysSet.map((key, index) => [key, getTile(index)]));
 
@@ -71,7 +86,9 @@ function printTiles(list, separate = true) {
           if (i === 9) {
             toDisplay[4] += '│         │  ';
           }
-          toDisplay[i / 3 + (i > 6 ? 2 : 1)] += `│  ${str.slice(i, i + 3).replace(/ |\*/g, '$& ')} │  `;
+          toDisplay[i / 3 + (i > 6 ? 2 : 1)] += `│  ${str
+            .slice(i, i + 3)
+            .replace(/ |\*/g, '$& ')} │  `;
         }
         toDisplay[8] += '└─────────┘  ';
         toDisplay[9] += '             ';

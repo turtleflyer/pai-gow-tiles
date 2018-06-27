@@ -183,13 +183,13 @@ function getTotalHand(hand1, hand2) {
   return new PGTotalHand(hand1, hand2);
 }
 
-function compareTotalHands(bankerHand, anotherHand) {
+function compareTotalHands(bankerHand, otherHand) {
   switch (true) {
-    case anotherHand.lowHand.value === 0:
-    case compareHands(bankerHand.lowHand, anotherHand.lowHand) >= 0:
+    case otherHand.lowHand.value === 0:
+    case compareHands(bankerHand.lowHand, otherHand.lowHand) >= 0:
       // The comparison of the low hands ends up in favor of the banker
       switch (true) {
-        case compareHands(bankerHand.highHand, anotherHand.highHand) >= 0:
+        case compareHands(bankerHand.highHand, otherHand.highHand) >= 0:
           return { win: true };
 
         default:
@@ -199,7 +199,7 @@ function compareTotalHands(bankerHand, anotherHand) {
     default:
       // The comparison of the low hands does not end up in favor of the banker
       switch (true) {
-        case compareHands(bankerHand.highHand, anotherHand.highHand) >= 0:
+        case compareHands(bankerHand.highHand, otherHand.highHand) >= 0:
           return { tie: true };
 
         default:
@@ -472,7 +472,16 @@ function formSolutions(tiles) {
                         return 1;
 
                       default:
-                        return 0;
+                        switch (true) {
+                          case sol1.highHand.lowTile.rank > sol2.highHand.lowTile.rank:
+                            return -1;
+
+                          case sol1.highHand.lowTile.rank < sol2.highHand.lowTile.rank:
+                            return 1;
+
+                          default:
+                            return 0;
+                        }
                     }
                 }
             }
@@ -526,6 +535,7 @@ function houseWay(tiles) {
           return rules.splitSevens(possibleSolutions);
 
         default:
+          console.log('Bo');
           return possibleSolutions[0];
       }
 
