@@ -1,6 +1,6 @@
 const {
   paiGow: { getTile, houseWay },
-} = require('../src/paigow');
+} = require('../src/paigowlib/paigow');
 
 // Cheking over all possible combination of tiles.
 const allTiles = [];

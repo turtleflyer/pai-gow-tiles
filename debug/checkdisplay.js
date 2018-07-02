@@ -2,7 +2,7 @@ const {
   paiGow: {
     getTile, getTileByRank, getHand, compareHands, getTotalHand, houseWay,
   },
-} = require('../src/paigow');
+} = require('../src/paigowlib/paigow');
 const {
   getTileByKey, parseTilesPatt, getPatt, printTiles, printTwoHands,
 } = require('./debuglib');

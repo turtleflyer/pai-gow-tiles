@@ -1,6 +1,6 @@
 const {
   paiGow: { houseWay },
-} = require('../src/paigow');
+} = require('../src/paigowlib/paigow');
 const { parseTilesPatt, printTwoHands } = require('./debuglib');
 
 console.log(printTwoHands(houseWay(parseTilesPatt('5 10h 5 10h'))));
