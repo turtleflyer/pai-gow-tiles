@@ -1,6 +1,6 @@
 const {
   paiGow: { getTile, houseWay },
-} = require('../src/paigowlib/paigow');
+} = require('../paigow');
 const { printTwoHands } = require('./debuglib');
 const isEqual = require('lodash.isequal');
 
