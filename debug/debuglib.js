@@ -1,6 +1,6 @@
 const {
   paiGow: { getTile, compareHands },
-} = require('../paigow');
+} = require('../paigow/paigow');
 
 // const  = paiGow;
 

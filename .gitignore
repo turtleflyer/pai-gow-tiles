@@ -1,7 +1,6 @@
 node_modules
 package-lock.json
 debug/debuglib.1.js
-src/paigow.1.js
 debug/checkhouserules.1.js
-import_template.js
 odds
+.vscode
