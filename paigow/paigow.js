@@ -1,8 +1,7 @@
 class PGTile {
-  constructor(arg) {
-    const {
-      value, altValue, name, rank,
-    } = arg;
+  constructor({
+    value, altValue, name, rank,
+  }) {
     Object.assign(this, {
       value,
       altValue,
@@ -302,9 +301,9 @@ const rules = {
     if (index7 >= 0) {
       const sol7LowHand = possibleSolutions[index7].lowHand;
       if (
-        sol7LowHand.value > 3 ||
-        (sol7LowHand.value === 3 && isHigh(sol7LowHand)) ||
-        (index8 < 0 && index9 < 0)
+        sol7LowHand.value > 3
+        || (sol7LowHand.value === 3 && isHigh(sol7LowHand))
+        || (index8 < 0 && index9 < 0)
       ) {
         return possibleSolutions[index7];
       }
@@ -314,8 +313,8 @@ const rules = {
 
   no88WithTeenOrDay(possibleSolutions) {
     if (
-      probe(possibleSolutions, [7, 9]) === 0 &&
-      (possibleSolutions[1].lowHand.rank === 1 && possibleSolutions[1].highHand.rank >= 14)
+      probe(possibleSolutions, [7, 9]) === 0
+      && (possibleSolutions[1].lowHand.rank === 1 && possibleSolutions[1].highHand.rank >= 14)
     ) {
       // console.log('No 8 - 8 with Teen or Day, Gee Joon, 5');
       return possibleSolutions[0];
@@ -325,9 +324,9 @@ const rules = {
 
   geeJoonAnd45(possibleSolutions) {
     if (
-      probe(possibleSolutions, [7, 9]) === 0 &&
-      possibleSolutions[0].highHand.lowTile.rank === 1 &&
-      possibleSolutions[0].lowHand.lowTile.rank === 0
+      probe(possibleSolutions, [7, 9]) === 0
+      && possibleSolutions[0].highHand.lowTile.rank === 1
+      && possibleSolutions[0].lowHand.lowTile.rank === 0
     ) {
       // console.log('4, 5 and Gee Joon');
       return possibleSolutions[1];
@@ -337,17 +336,17 @@ const rules = {
 
   high8and11and10(possibleSolutions) {
     if (
-      probe(possibleSolutions, [8, 8]) === 0 &&
-      possibleSolutions[0].highHand.rank === 13 &&
-      possibleSolutions[0].lowHand.rank === 8
+      probe(possibleSolutions, [8, 8]) === 0
+      && possibleSolutions[0].highHand.rank === 13
+      && possibleSolutions[0].lowHand.rank === 8
     ) {
       // console.log('High 8, 10, 11, 7');
       return possibleSolutions[1];
     }
     if (
-      probe(possibleSolutions, [v => v === 6 || v === 7, 9]) === 0 &&
-      possibleSolutions[0].highHand.rank === 13 &&
-      possibleSolutions[0].lowHand.rank === 11
+      probe(possibleSolutions, [v => v === 6 || v === 7, 9]) === 0
+      && possibleSolutions[0].highHand.rank === 13
+      && possibleSolutions[0].lowHand.rank === 11
     ) {
       // console.log('High 8, high 10, 11, 6');
       return possibleSolutions[0];
@@ -357,9 +356,9 @@ const rules = {
 
   twoSixesGeeJoon11(possibleSolutions) {
     if (
-      probe(possibleSolutions, [7, 9]) === 0 &&
-      possibleSolutions[0].highHand.rank === 10 &&
-      possibleSolutions[0].lowHand.rank === 8
+      probe(possibleSolutions, [7, 9]) === 0
+      && possibleSolutions[0].highHand.rank === 10
+      && possibleSolutions[0].lowHand.rank === 8
     ) {
       // console.log('Two 6, Gee Joon, 11');
       return possibleSolutions[0];
@@ -369,9 +368,9 @@ const rules = {
 
   twoFours9and5(possibleSolutions) {
     if (
-      probe(possibleSolutions, [3, 9]) === 0 &&
-      possibleSolutions[0].highHand.rank === 12 &&
-      possibleSolutions[0].lowHand.rank === 9
+      probe(possibleSolutions, [3, 9]) === 0
+      && possibleSolutions[0].highHand.rank === 12
+      && possibleSolutions[0].lowHand.rank === 9
     ) {
       // console.log('Two 4, 9, 5');
       return possibleSolutions[1];
@@ -408,9 +407,9 @@ const rules = {
     });
     const first = sortedByHigh[0];
     const last = sortedByHigh[sortedByHigh.length - 1];
-    return first.lowHand.value > 3 ||
-      (first.lowHand.value === 3 && isHigh(first.lowHand)) ||
-      last.highHand.value < 7
+    return first.lowHand.value > 3
+      || (first.lowHand.value === 3 && isHigh(first.lowHand))
+      || last.highHand.value < 7
       ? first
       : last;
   },
@@ -419,10 +418,12 @@ const rules = {
 function formSolutions(tiles) {
   let calculateSolutions = [[0, 1, 2, 3], [0, 2, 1, 3], [0, 3, 1, 2]].reduce((sol, order) => {
     const modSol = sol;
-    modSol.push(getTotalHand(
-      getHand(tiles[order[0]], tiles[order[1]]),
-      getHand(tiles[order[2]], tiles[order[3]]),
-    ));
+    modSol.push(
+      getTotalHand(
+        getHand(tiles[order[0]], tiles[order[1]]),
+        getHand(tiles[order[2]], tiles[order[3]]),
+      ),
+    );
     return modSol;
   }, []);
 
@@ -556,12 +557,12 @@ function houseWay(tiles) {
   }
 
   return (
-    rules.no88WithTeenOrDay(possibleSolutions) ||
-    rules.geeJoonAnd45(possibleSolutions) ||
-    rules.high8and11and10(possibleSolutions) ||
-    rules.twoSixesGeeJoon11(possibleSolutions) ||
-    rules.twoFours9and5(possibleSolutions) ||
-    rules.highThree(possibleSolutions)
+    rules.no88WithTeenOrDay(possibleSolutions)
+    || rules.geeJoonAnd45(possibleSolutions)
+    || rules.high8and11and10(possibleSolutions)
+    || rules.twoSixesGeeJoon11(possibleSolutions)
+    || rules.twoFours9and5(possibleSolutions)
+    || rules.highThree(possibleSolutions)
   );
 }
 
@@ -574,3 +575,4 @@ module.exports.paiGow = {
   compareTotalHands,
   houseWay,
 };
+module.exports.PGTile = PGTile;

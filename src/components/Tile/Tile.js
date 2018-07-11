@@ -1,25 +1,66 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Tile.css';
 
-const tilesPaths = [];
+const {
+  PGTile,
+  paiGow: { getTile },
+} = require('../../../paigow/paigow');
 
 function importAll(r) {
-  r.keys().forEach(key => tilesPaths.push(r(key)));
+  return r.keys().reduce((imp, key) => {
+    imp.push(r(key));
+    return imp;
+  }, []);
 }
 
-importAll(require.context('./', false, /\.svg$/));
+const tilesPaths = importAll(require.context('./', false, /\.svg$/));
 
-// const Tile = ({ n }) => (<img src={tilesPaths[n]} alt="tile" />);
+const mapOfTiles = new Map(
+  [
+    ...new Array(2).fill(null).map((_, i) => (i % 2 === 0 ? i / 2 : -1)),
+    ...new Array(11).fill(null).map((_, i) => i + 1),
+    ...new Array(8).fill(null).map((_, i) => (i % 2 === 0 ? i / 2 + 12 : -1)),
+  ].reduce(
+    ({ map, last }, p, i) => {
+      const added = last;
+      if (p < 0) {
+        added.second = tilesPaths[i];
+        return { map, last: null };
+      }
+      if (added) {
+        added.second = added.prime;
+      }
+      const toAdd = {};
+      toAdd.prime = tilesPaths[i];
+      map.push([getTile(p), toAdd]);
+      return { map, last: toAdd };
+    },
+    { map: [], last: null },
+  ).map,
+);
+console.log('mapOfTiles: ', mapOfTiles);
+
+function getTileImg(tile) {
+  return mapOfTiles.get(tile);
+}
+console.log('getTile(1): ', getTile(1));
+console.log('getTileImg[tile]: ', getTileImg(getTile(1)));
 
 class Tile extends React.PureComponent {
   static propTypes = {
-    n: PropTypes.number.isRequired,
+    tile: PropTypes.instanceOf(PGTile).isRequired,
+    second: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    second: false,
   };
 
   render() {
-    return <img src={tilesPaths[this.props.n]} alt="tile" />;
+    const { tile, second } = this.props;
+    return <img src={second ? getTileImg(tile).second : getTileImg(tile).prime} alt="tile" />;
   }
-
 }
 
 export default Tile;

@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Creator: CorelDRAW 2018 (64-Bit) -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.381618in" height="1.01973in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 24.24 64.77"
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="36px" height="100px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 3.31 9.18"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <style type="text/css">
    <![CDATA[
     .fil0 {fill:black}
     .fil1 {fill:#ED3237}
+    .fil2 {fill:white}
    ]]>
   </style>
  </defs>
  <g id="Layer_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <g id="_2141508284976">
-   <rect class="fil0" x="-0" width="24.24" height="64.77" rx="1.4" ry="1.4"/>
-   <circle class="fil1" cx="7.05" cy="7.05" r="4.56"/>
-   <circle class="fil1" cx="17.19" cy="7.05" r="4.56"/>
-   <circle class="fil1" transform="matrix(1.009E-14 0.380977 -0.380977 1.009E-14 7.05318 23.94)" r="11.97"/>
-   <circle class="fil1" transform="matrix(1.009E-14 0.380977 -0.380977 1.009E-14 7.05318 40.8272)" r="11.97"/>
-   <circle class="fil1" transform="matrix(1.009E-14 0.380977 -0.380977 1.009E-14 7.05318 57.7145)" r="11.97"/>
-   <circle class="fil1" cx="17.19" cy="23.94" r="4.56"/>
-   <circle class="fil1" cx="17.19" cy="40.83" r="4.56"/>
-   <circle class="fil1" cx="17.19" cy="57.71" r="4.56"/>
+  <g id="_2339819452368">
+   <rect class="fil0" width="3.31" height="9.18" rx="0.04" ry="0.74"/>
+   <circle class="fil1" cx="0.93" cy="1" r="0.65"/>
+   <circle class="fil2" cx="2.37" cy="1" r="0.65"/>
+   <circle class="fil1" transform="matrix(3.29825E-15 0.124536 -0.124535 3.29827E-15 0.934701 2.43671)" r="5.19"/>
+   <circle class="fil1" transform="matrix(3.29825E-15 0.124536 -0.124535 3.29827E-15 0.934701 3.87343)" r="5.19"/>
+   <circle class="fil2" transform="matrix(3.29825E-15 0.124536 -0.124535 3.29827E-15 0.934701 5.31014)" r="5.19"/>
+   <circle class="fil2" transform="matrix(3.29825E-15 0.124536 -0.124535 3.29827E-15 0.934701 6.74686)" r="5.19"/>
+   <circle class="fil2" transform="matrix(3.29825E-15 0.124536 -0.124535 3.29827E-15 0.934701 8.18357)" r="5.19"/>
+   <circle class="fil2" cx="2.37" cy="2.44" r="0.65"/>
+   <circle class="fil2" cx="2.37" cy="3.87" r="0.65"/>
+   <circle class="fil1" cx="2.37" cy="5.31" r="0.65"/>
+   <circle class="fil1" cx="2.37" cy="6.75" r="0.65"/>
+   <circle class="fil1" cx="2.37" cy="8.18" r="0.65"/>
   </g>
  </g>
 </svg>

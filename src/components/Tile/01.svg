@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Creator: CorelDRAW 2018 (64-Bit) -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.381618in" height="1.01973in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 18.4 49.18"
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="36px" height="100px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 2.69 7.47"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <style type="text/css">
    <![CDATA[
     .fil0 {fill:black}
-    .fil1 {fill:#ED3237}
-    .fil2 {fill:white}
+    .fil2 {fill:#ED3237}
+    .fil1 {fill:white}
    ]]>
   </style>
  </defs>
  <g id="Layer_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <g id="_2141614476080">
-   <rect class="fil0" x="-0" width="18.4" height="49.18" rx="1.06" ry="1.06"/>
-   <circle class="fil1" cx="5.36" cy="5.36" r="3.46"/>
-   <circle class="fil2" cx="13.05" cy="5.36" r="3.46"/>
-   <circle class="fil1" transform="matrix(1.009E-14 0.380977 -0.380977 1.009E-14 5.35523 13.0483)" r="9.09"/>
-   <circle class="fil1" transform="matrix(1.009E-14 0.380977 -0.380977 1.009E-14 5.35523 20.7416)" r="9.09"/>
-   <circle class="fil2" transform="matrix(1.009E-14 0.380977 -0.380977 1.009E-14 5.35523 28.4349)" r="9.09"/>
-   <circle class="fil2" transform="matrix(1.009E-14 0.380977 -0.380977 1.009E-14 5.35523 36.1282)" r="9.09"/>
-   <circle class="fil2" transform="matrix(1.009E-14 0.380977 -0.380977 1.009E-14 5.35523 43.8215)" r="9.09"/>
-   <circle class="fil2" cx="13.05" cy="13.05" r="3.46"/>
-   <circle class="fil2" cx="13.05" cy="20.74" r="3.46"/>
-   <circle class="fil1" cx="13.05" cy="28.43" r="3.46"/>
-   <circle class="fil1" cx="13.05" cy="36.13" r="3.46"/>
-   <circle class="fil1" cx="13.05" cy="43.82" r="3.46"/>
+  <g id="_2339819446896">
+   <rect class="fil0" width="2.69" height="7.47" rx="0.04" ry="0.6"/>
+   <circle class="fil1" cx="0.76" cy="6.66" r="0.53"/>
+   <circle class="fil1" cx="1.93" cy="6.66" r="0.53"/>
+   <circle class="fil2" transform="matrix(3.29825E-15 -0.124536 -0.124535 -3.29827E-15 0.760182 2.7607)" r="4.22"/>
+   <circle class="fil2" transform="matrix(3.29825E-15 -0.124536 -0.124535 -3.29827E-15 0.760182 0.813286)" r="4.22"/>
+   <circle class="fil2" cx="1.93" cy="2.76" r="0.53"/>
+   <circle class="fil2" cx="1.93" cy="0.81" r="0.53"/>
   </g>
  </g>
 </svg>
