@@ -1,29 +1,24 @@
 import React from 'react';
-import Tile from './components/Tile/Tile';
+import EntireHand from './components/EntireHand/EntireHand';
 // import './App.css';
 
 const {
   paiGow: { getTile },
+  paiGow: { getHand, getEntireHand, houseWay },
 } = require('../paigow/paigow');
 
 function App() {
   return (
     <div className="App">
-      <div>
-        {new Array(8).fill(null).reduce((tiles, _, i) => {
-          tiles.push(<Tile tile={getTile(i)} second={false} key={(i * 2).toString()} />);
-          tiles.push(<Tile tile={getTile(i)} second key={(i * 2 + 1).toString()} />);
-          return tiles;
-        }, [])}
-      </div>
-      <div>
-        {new Array(8).fill(null).reduce((tiles, _, i) => {
-          const shift = i + 8;
-          tiles.push(<Tile tile={getTile(shift)} second={false} key={(shift * 2).toString()} />);
-          tiles.push(<Tile tile={getTile(shift)} second key={(shift * 2 + 1).toString()} />);
-          return tiles;
-        }, [])}
-      </div>
+      <EntireHand
+        entireHand={houseWay([getTile(4), getTile(6), getTile(11), getTile(4)])}
+        size="100px"
+      />
+      <EntireHand
+        entireHand={houseWay([getTile(8), getTile(13), getTile(0), getTile(13)])}
+        size="15rem"
+        mirrored
+      />
     </div>
   );
 }

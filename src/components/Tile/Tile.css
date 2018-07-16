@@ -1,5 +1,67 @@
-img {
+/* .Tile {
+  display: block;
+  margin: 0 1px 1px 0;
+}
+
+.EntireHand .Tile {
+  position: absolute;
+}
+
+.Tile--straight {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.Tile--rotated {
+  position: relative;
+  height: 36%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.Tile--straight > img {
+  height: 100%;
+}
+
+.Tile--rotated > img {
+  position: relative;
+  height: 277.8%;
+  transform: rotate(90deg) translate(-88.9%, -32%);
+} */
+
+/* .Tile {
+  display: block;
+  margin: 0 0.15rem 0.15rem 0;
+} */
+
+/* .EntireHand .Tile {
+  position: absolute;
+}
+
+.Tile--straight {
   height: 100px;
-  widows: auto;
-  margin-right: 1px;
+  width: 36px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0, 0, 0, 0);
+}
+
+.Tile--rotated {
+  height: 36px;
+  width: 100px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0, 0, 0, 0);
+}
+
+.Tile--straight > img {
+  height: 100px;
+}
+
+.Tile--rotated > img {
+  height: 100px;
+  transform: rotate(90deg) translate(-32px, -32%);
+} */
+
+.Tile {
+  height: 100%;
 }

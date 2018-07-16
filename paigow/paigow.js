@@ -171,18 +171,18 @@ function compareHands(hand1, hand2) {
   }
 }
 
-class PGTotalHand {
+class PGEntireHand {
   constructor(hand1, hand2) {
     const [lowHand, highHand] = [hand1, hand2].sort(compareHands);
     Object.assign(this, { lowHand, highHand });
   }
 }
 
-function getTotalHand(hand1, hand2) {
-  return new PGTotalHand(hand1, hand2);
+function getEntireHand(hand1, hand2) {
+  return new PGEntireHand(hand1, hand2);
 }
 
-function compareTotalHands(bankerHand, otherHand) {
+function compareEntireHands(bankerHand, otherHand) {
   switch (true) {
     case otherHand.lowHand.value === 0:
     case compareHands(bankerHand.lowHand, otherHand.lowHand) >= 0:
@@ -207,8 +207,8 @@ function compareTotalHands(bankerHand, otherHand) {
   }
 }
 
-function totalValue(totalHand) {
-  return totalHand.lowHand.value + totalHand.highHand.value;
+function totalValue(entireHand) {
+  return entireHand.lowHand.value + entireHand.highHand.value;
 }
 
 function isHigh(handOrTile) {
@@ -419,7 +419,7 @@ function formSolutions(tiles) {
   let calculateSolutions = [[0, 1, 2, 3], [0, 2, 1, 3], [0, 3, 1, 2]].reduce((sol, order) => {
     const modSol = sol;
     modSol.push(
-      getTotalHand(
+      getEntireHand(
         getHand(tiles[order[0]], tiles[order[1]]),
         getHand(tiles[order[2]], tiles[order[3]]),
       ),
@@ -571,8 +571,10 @@ module.exports.paiGow = {
   getTileByRank,
   getHand,
   compareHands,
-  getTotalHand,
-  compareTotalHands,
+  getEntireHand,
+  compareEntireHands,
   houseWay,
 };
 module.exports.PGTile = PGTile;
+module.exports.PGHand = PGHand;
+module.exports.PGEntireHand = PGEntireHand;

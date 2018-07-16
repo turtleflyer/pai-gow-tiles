@@ -39,13 +39,10 @@ const mapOfTiles = new Map(
     { map: [], last: null },
   ).map,
 );
-console.log('mapOfTiles: ', mapOfTiles);
 
 function getTileImg(tile) {
   return mapOfTiles.get(tile);
 }
-console.log('getTile(1): ', getTile(1));
-console.log('getTileImg[tile]: ', getTileImg(getTile(1)));
 
 class Tile extends React.PureComponent {
   static propTypes = {
@@ -59,7 +56,13 @@ class Tile extends React.PureComponent {
 
   render() {
     const { tile, second } = this.props;
-    return <img src={second ? getTileImg(tile).second : getTileImg(tile).prime} alt="tile" />;
+    return (
+      <img
+        className="Tile"
+        src={second ? getTileImg(tile).second : getTileImg(tile).prime}
+        alt="tile"
+      />
+    );
   }
 }
 

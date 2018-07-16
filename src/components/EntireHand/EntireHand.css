@@ -1,0 +1,8 @@
+.EntireHand div {
+  position: absolute;
+  overflow: hidden;
+}
+
+.EntireHand--rotated-part {
+  transform: rotate(90deg);
+}
