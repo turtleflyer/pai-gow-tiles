@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import './Tile.css';
 
@@ -44,7 +44,7 @@ function getTileImg(tile) {
   return mapOfTiles.get(tile);
 }
 
-class Tile extends React.PureComponent {
+export default class Tile extends PureComponent {
   static propTypes = {
     tile: PropTypes.instanceOf(PGTile).isRequired,
     second: PropTypes.bool,
@@ -65,5 +65,3 @@ class Tile extends React.PureComponent {
     );
   }
 }
-
-export default Tile;

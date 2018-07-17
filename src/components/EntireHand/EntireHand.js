@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Tile from '../Tile/Tile';
 import { PGEntireHand } from '../../../paigow/paigow';
 import './EntireHand.css';
 
-class EntireHand extends React.PureComponent {
+export default class EntireHand extends PureComponent {
   static propTypes = {
     entireHand: PropTypes.instanceOf(PGEntireHand).isRequired,
     mirrored: PropTypes.bool,
@@ -25,18 +25,6 @@ class EntireHand extends React.PureComponent {
     const sizeUnit = size.match(/^\d+([a-z]+)/)[1];
     const sizeValue = Number(size.match(/^(\d+)[a-z]+/)[1]);
     const sizeOfPadding = sizeValue * 0.02;
-
-    // const dublicates = tiles.reduce(
-    //   ({ dub, all }, tile) => {
-    //     if (all.has(tile)) {
-    //       dub.add(tile);
-    //     } else {
-    //       all.add(tile);
-    //     }
-    //     return { dub, all };
-    //   },
-    //   { dub: new Set(), all: new Set() },
-    // ).dub;
 
     function stringifySize(n) {
       return `${n}${sizeUnit}`;
@@ -107,7 +95,12 @@ class EntireHand extends React.PureComponent {
               top: sizeModel.tile3OffsetY,
             }}
           >
-            <Tile tile={tiles[2]} second={tiles[2] === tiles[0] || tiles[2] === tiles[1]} rotated shiftY="11px" />
+            <Tile
+              tile={tiles[2]}
+              second={tiles[2] === tiles[0] || tiles[2] === tiles[1]}
+              rotated
+              shiftY="11px"
+            />
           </div>
           <div
             className="EntireHand EntireHand--rotated-part"
@@ -117,12 +110,15 @@ class EntireHand extends React.PureComponent {
               top: sizeModel.tile4OffsetY,
             }}
           >
-            <Tile tile={tiles[3]} second={tiles[3] === tiles[0] || tiles[3] === tiles[1] || tiles[3] === tiles[2]} rotated shiftY="50px" />
+            <Tile
+              tile={tiles[3]}
+              second={tiles[3] === tiles[0] || tiles[3] === tiles[1] || tiles[3] === tiles[2]}
+              rotated
+              shiftY="50px"
+            />
           </div>
         </div>
       </div>
     );
   }
 }
-
-export default EntireHand;
