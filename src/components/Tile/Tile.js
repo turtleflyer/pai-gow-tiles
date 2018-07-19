@@ -55,12 +55,16 @@ export default class Tile extends PureComponent {
   };
 
   render() {
-    const { tile, second } = this.props;
+    const {
+      tile, second, onCheck, id,
+    } = this.props;
     return (
       <img
+        onClick={onCheck}
         className="Tile"
         src={second ? getTileImg(tile).second : getTileImg(tile).prime}
         alt="tile"
+        id={id}
       />
     );
   }

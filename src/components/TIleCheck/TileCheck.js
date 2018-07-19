@@ -16,15 +16,15 @@ export default class TileCheck extends PureComponent {
   static defaultProps = {
     second: false,
     isChecked: false,
-  }
+  };
 
   render() {
     const {
-      tile, isChecked, second, onCheck,
+      tile, isChecked, second, onCheck, id
     } = this.props;
     return (
       <div className="TileCheck">
-        <Tile tile={tile} second={second} />
+        <Tile tile={tile} second={second} id={id} onCheck={onCheck} />
         {isChecked ? (
           <div className="TileCheck TileCheck--check-mark">
             <img src={checkMark} alt="checked" />
