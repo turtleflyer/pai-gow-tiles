@@ -14,7 +14,7 @@ function importAll(r) {
   }, []);
 }
 
-const tilesPaths = importAll(require.context('./', false, /\.svg$/));
+const tilesPaths = importAll(require.context('./images', false, /\.svg$/));
 
 const mapOfTiles = new Map(
   [
@@ -48,23 +48,22 @@ export default class Tile extends PureComponent {
   static propTypes = {
     tile: PropTypes.instanceOf(PGTile).isRequired,
     second: PropTypes.bool,
+    tileN: PropTypes.number,
   };
 
   static defaultProps = {
     second: false,
+    tileN: null,
   };
 
   render() {
-    const {
-      tile, second, onCheck, id,
-    } = this.props;
+    const { tile, second, tileN } = this.props;
     return (
       <img
-        onClick={onCheck}
+        tile-n={tileN}
         className="Tile"
         src={second ? getTileImg(tile).second : getTileImg(tile).prime}
         alt="tile"
-        id={id}
       />
     );
   }

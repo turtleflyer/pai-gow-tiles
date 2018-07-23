@@ -1,7 +1,7 @@
+/* eslint-env browser */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import TilesRow from '../TilesRow/TilesRow';
-import { PGTile, paiGow } from '../../../paigow/paigow';
+import { paiGow } from '../../../paigow/paigow';
 import EntireHand from '../EntireHand/EntireHand';
 
 const { getTile, houseWay } = paiGow;
@@ -21,19 +21,12 @@ export default class HouseWay extends Component {
   }
 
   onCheck = (e) => {
-    // console.log(e.target.id);
-    // console.log(e.target);
-    const tileN = e.target.id.match(/#(\d+)/)[1];
-    // console.log('tileN: ', tileN);
+    const tileN = Number(e.target.getAttribute('tile-n'));
     this.setState((prevState) => {
-      // console.log('prevState: ', prevState);
       const { setOfTiles, tilesToSet } = prevState;
-      // console.log('tilesToSet: ', tilesToSet);
       let newTilesToSet = tilesToSet;
       const entry = setOfTiles[tileN];
-      if (!entry.isChecked && tilesToSet.length === 4) {
-        // console.log('Nothing more to check');
-      } else {
+      if (entry.isChecked || tilesToSet.length < 4) {
         if (entry.isChecked) {
           newTilesToSet = newTilesToSet.filter(tile => tile.n !== tileN);
         } else {
@@ -45,21 +38,46 @@ export default class HouseWay extends Component {
     });
   };
 
+  onCheckByKey = (e) => {
+    const currTabIndex = Number(e.target.getAttribute('tile-n'));
+    switch (e.key) {
+      case ' ':
+        this.onCheck(e);
+        break;
+
+      case 'ArrowRight':
+        if (currTabIndex <= 30) {
+          document.querySelector(`[tile-n="${currTabIndex + 1}"]`).focus();
+        }
+        break;
+
+      case 'ArrowLeft':
+        if (currTabIndex >= 1) {
+          document.querySelector(`[tile-n="${currTabIndex - 1}"]`).focus();
+        }
+        break;
+
+      default:
+        break;
+    }
+  };
+
   render() {
     const { setOfTiles, tilesToSet } = this.state;
-    // console.log('setOfTiles: ', setOfTiles);
-    // console.log('this.state: ', this.state);
     return (
       <div>
         <div>
-          <TilesRow setOfTiles={setOfTiles} onCheck={this.onCheck} />
+          <TilesRow
+            setOfTiles={setOfTiles}
+            onCheck={this.onCheck}
+            onCheckByKey={this.onCheckByKey}
+          />
         </div>
         {tilesToSet.length === 4 ? (
           <div>
             <EntireHand
               tilesToSet={tilesToSet}
               entireHand={houseWay(tilesToSet.map(({ tile }) => tile))}
-              size="6rem"
             />
           </div>
         ) : null}
