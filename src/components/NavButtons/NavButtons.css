@@ -1,0 +1,31 @@
+.NavButtons__navigation {
+  background-color: darkgoldenrod;
+  display: flex;
+  margin: 2rem 1rem 2rem 1rem;
+}
+
+.NavButtons__menu-button {
+  background-color: darkgoldenrod;
+  color: white;
+  border: solid white;
+  border-width: 0 2px 2px;
+  box-sizing: content-box;
+}
+
+.NavButtons__menu-button--active {
+  background-color: white;
+  color: darkgoldenrod;
+}
+
+.NavButtons__menu-button:focus {
+  outline: 0;
+  background-color: rgb(201, 171, 96);
+}
+
+.NavButtons__menu-button--active:focus {
+  background-color: rgb(238, 224, 190);
+}
+.NavButtons__menu-button:hover {
+  outline: 0;
+  border-bottom: 2px solid darkgoldenrod;
+}

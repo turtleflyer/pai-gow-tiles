@@ -1,12 +1,12 @@
 /* eslint-env browser */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { PGTile } from '../../../paigow/paigow';
 import TileCheck from '../TIleCheck/TileCheck';
 import './TilesRow.css';
 
 
-export default class TilesRow extends Component {
+export default class TilesRow extends PureComponent {
   static propTypes = {
     setOfTiles: PropTypes.arrayOf(
       PropTypes.shape({
