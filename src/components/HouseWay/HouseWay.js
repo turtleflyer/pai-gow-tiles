@@ -1,12 +1,13 @@
 /* eslint-env browser */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import TilesRow from '../TilesRow/TilesRow';
 import { paiGow } from '../../../paigow/paigow';
 import EntireHand from '../EntireHand/EntireHand';
+import './HouseWay.css';
 
 const { getTile, houseWay } = paiGow;
 
-export default class HouseWay extends Component {
+export default class HouseWay extends PureComponent {
   static propTypes = {};
 
   constructor(props) {
@@ -20,29 +21,38 @@ export default class HouseWay extends Component {
     };
   }
 
-  onCheck = (e) => {
+  checkTile = (e) => {
     const tileN = Number(e.target.getAttribute('tile-n'));
     this.setState((prevState) => {
       const { setOfTiles, tilesToSet } = prevState;
-      let newTilesToSet = tilesToSet;
+      let renewedTilesToSet;
+      let renewedSetOfTiles;
       const entry = setOfTiles[tileN];
       if (entry.isChecked || tilesToSet.length < 4) {
+        renewedTilesToSet = [...tilesToSet];
+        renewedSetOfTiles = [...setOfTiles];
         if (entry.isChecked) {
-          newTilesToSet = newTilesToSet.filter(tile => tile.n !== tileN);
+          renewedTilesToSet = renewedTilesToSet.filter(tile => tile.n !== tileN);
         } else {
-          newTilesToSet.push({ n: tileN, tile: entry.tile, second: tileN % 2 === 1 });
+          renewedTilesToSet.push({ n: tileN, tile: entry.tile, second: tileN % 2 === 1 });
         }
-        entry.isChecked = !entry.isChecked;
+        renewedSetOfTiles[tileN].isChecked = !renewedSetOfTiles[tileN].isChecked;
+      } else {
+        renewedTilesToSet = tilesToSet;
+        renewedSetOfTiles = setOfTiles;
       }
-      return { setOfTiles, tilesToSet: newTilesToSet };
+      return Object.assign({}, prevState, {
+        setOfTiles: renewedSetOfTiles,
+        tilesToSet: renewedTilesToSet,
+      });
     });
   };
 
-  onCheckByKey = (e) => {
+  checkTileByKey = (e) => {
     const currTabIndex = Number(e.target.getAttribute('tile-n'));
     switch (e.key) {
       case ' ':
-        this.onCheck(e);
+        this.checkTile(e);
         break;
 
       case 'ArrowRight':
@@ -65,12 +75,12 @@ export default class HouseWay extends Component {
   render() {
     const { setOfTiles, tilesToSet } = this.state;
     return (
-      <div>
+      <div className="HouseWay">
         <div>
           <TilesRow
             setOfTiles={setOfTiles}
-            onCheck={this.onCheck}
-            onCheckByKey={this.onCheckByKey}
+            onCheck={this.checkTile}
+            onCheckByKey={this.checkTileByKey}
           />
         </div>
         {tilesToSet.length === 4 ? (
