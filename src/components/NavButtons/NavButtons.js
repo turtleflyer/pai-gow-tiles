@@ -7,38 +7,8 @@ import './NavButtons.css';
 export default class NavButtons extends PureComponent {
   static propTypes = {
     activeSection: PropTypes.oneOf(Object.keys(constants).map(k => constants[k])).isRequired,
+    onCheck: PropTypes.func.isRequired,
   };
-
-  // componentDidMount() {
-  //   const { activeSection } = this.props;
-
-  //   [...document.querySelectorAll('.NavButtons__menu-button')].forEach((button) => {
-  //     button.classList.remove('NavButtons__menu-button--active');
-  //   });
-
-  //   switch (activeSection) {
-  //     case constants.HOUSE_WAY_SEC:
-  //       document
-  //         .querySelector(`[section=${constants.HOUSE_WAY_SEC}]`)
-  //         .classList.add('NavButtons__menu-button--active');
-  //       break;
-
-  //     case constants.PAI_GOW_LAG_SEC:
-  //       document
-  //         .querySelector(`[section=${constants.PAI_GOW_LAG_SEC}]`)
-  //         .classList.add('NavButtons__menu-button--active');
-  //       break;
-
-  //     case constants.GAMEPLAY_SEC:
-  //       document
-  //         .querySelector(`[section=${constants.GAMEPLAY_SEC}]`)
-  //         .classList.add('NavButtons__menu-button--active');
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-  // }
 
   render() {
     const { onCheck, activeSection } = this.props;

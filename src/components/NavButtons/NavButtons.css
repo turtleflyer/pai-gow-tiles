@@ -17,15 +17,8 @@
   color: darkgoldenrod;
 }
 
+.NavButtons__menu-button:hover,
 .NavButtons__menu-button:focus {
-  outline: 0;
-  background-color: rgb(201, 171, 96);
-}
-
-.NavButtons__menu-button--active:focus {
-  background-color: rgb(238, 224, 190);
-}
-.NavButtons__menu-button:hover {
   outline: 0;
   border-bottom: 2px solid darkgoldenrod;
 }

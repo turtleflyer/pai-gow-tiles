@@ -14,19 +14,19 @@ export default class EntireHand extends PureComponent {
       }),
     ),
     entireHand: PropTypes.instanceOf(PGEntireHand).isRequired,
-    // mirrored: PropTypes.bool,
+    mirrored: PropTypes.bool,
   };
 
   static defaultProps = {
     tilesToSet: null,
-    // mirrored: false,
+    mirrored: false,
   };
 
   render() {
     const {
       tilesToSet,
       entireHand: { lowHand, highHand },
-      // mirrored,
+      mirrored,
     } = this.props;
     const tiles = [lowHand.lowTile, lowHand.highTile, highHand.lowTile, highHand.highTile];
     let tilesFaces;
@@ -36,7 +36,11 @@ export default class EntireHand extends PureComponent {
 
     return tilesToSet ? (
       <div className="EntireHand EntireHand--medium-size">
-        <div className="EntireHand__straight-part">
+        <div
+          className={`EntireHand__straight-part${
+            mirrored ? ' EntireHand__straight-part--mirrored' : ''
+          }`}
+        >
           <div className="EntireHand__tile0">
             <Tile tile={tiles[0]} second={tilesFaces.get(tiles[0])} />
           </div>
@@ -44,7 +48,11 @@ export default class EntireHand extends PureComponent {
             <Tile tile={tiles[1]} second={tilesFaces.get(tiles[1])} />
           </div>
         </div>
-        <div className="EntireHand__rotated-part">
+        <div
+          className={`EntireHand__rotated-part${
+            mirrored ? ' EntireHand__rotated-part--mirrored' : ''
+          }`}
+        >
           <div className="EntireHand__tile2">
             <Tile tile={tiles[2]} second={tilesFaces.get(tiles[2])} rotated />
           </div>
@@ -55,7 +63,11 @@ export default class EntireHand extends PureComponent {
       </div>
     ) : (
       <div className="EntireHand EntireHand--medium-size">
-        <div className="EntireHand__straight-part">
+        <div
+          className={`EntireHand__straight-part${
+            mirrored ? ' EntireHand__straight-part--mirrored' : ''
+          }`}
+        >
           <div className="EntireHand__tile0">
             <Tile tile={tiles[0]} />
           </div>
@@ -63,7 +75,11 @@ export default class EntireHand extends PureComponent {
             <Tile tile={tiles[1]} second={tiles[1] === tiles[0]} />
           </div>
         </div>
-        <div className="EntireHand__rotated-part">
+        <div
+          className={`EntireHand__rotated-part${
+            mirrored ? ' EntireHand__rotated-part--mirrored' : ''
+          }`}
+        >
           <div className="EntireHand__tile2">
             <Tile tile={tiles[2]} second={tiles[2] === tiles[0] || tiles[2] === tiles[1]} rotated />
           </div>

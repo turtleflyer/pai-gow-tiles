@@ -19,11 +19,19 @@
   width: calc(0.72 * var(--height) + var(--size-of-padding));
 }
 
+.EntireHand__straight-part--mirrored {
+  left: calc(var(--height) + var(--size-of-padding));
+}
+
 .EntireHand__rotated-part {
   transform: rotate(90deg);
   height: var(--height);
   width: var(--height);
   left: calc(0.72 * var(--height) + var(--size-of-padding) * 2);
+}
+
+.EntireHand__rotated-part--mirrored {
+  left: 0;
 }
 
 .EntireHand__tile0 {
