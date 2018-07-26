@@ -1,6 +1,7 @@
 .App {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   position: relative;
   margin: 0 auto;
 }

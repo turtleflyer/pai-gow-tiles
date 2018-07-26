@@ -2,14 +2,8 @@
   display: flex;
   margin: 2rem 1rem 1rem;
   justify-content: center;
-}
-
-/* .NavButtons__flex-wrapper {
-  background-color: darkgoldenrod;
-  display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-} */
+}
 
 .NavButtons__menu-button {
   display: block;
