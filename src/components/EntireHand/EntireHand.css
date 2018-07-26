@@ -3,6 +3,7 @@
 }
 
 .EntireHand {
+  margin: 0 auto;
   position: relative;
   --size-of-padding: calc(var(--height) * 0.02);
   height: var(--height);

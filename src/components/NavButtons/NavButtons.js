@@ -13,7 +13,7 @@ export default class NavButtons extends PureComponent {
   render() {
     const { onCheck, activeSection } = this.props;
     return (
-      <nav className="NavButtons__navigation">
+      <nav className="NavButtons">
         <button
           type="button"
           id="NavButtons__menu-button--HW"

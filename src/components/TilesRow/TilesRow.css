@@ -1,5 +1,13 @@
 .TileRow {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.TileRow__flex-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1px;
 }

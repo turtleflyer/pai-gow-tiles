@@ -5,7 +5,6 @@ import { PGTile } from '../../../paigow/paigow';
 import TileCheck from '../TIleCheck/TileCheck';
 import './TilesRow.css';
 
-
 export default class TilesRow extends PureComponent {
   static propTypes = {
     setOfTiles: PropTypes.arrayOf(
@@ -26,17 +25,38 @@ export default class TilesRow extends PureComponent {
     const { setOfTiles, onCheck, onCheckByKey } = this.props;
     return (
       <div className="TileRow">
-        {setOfTiles.map(({ tile, isChecked }, i) => (
-          <TileCheck
-            tile={tile}
-            second={i % 2 === 1}
-            isChecked={isChecked}
-            key={`${tile.name}${i % 2 ? '-second' : ''}`}
-            tileN={i}
-            onCheck={onCheck}
-            onCheckByKey={onCheckByKey}
-          />
-        ))}
+        {
+          setOfTiles.reduce((blocks, { tile, isChecked }, i) => {
+            function addToBlocks(d) {
+              if (d > 1) {
+                addToBlocks(d - 1);
+              }
+              if ((i + 1) % 2 ** d === 0) {
+                blocks[5 - d].push(
+                  <div key={`depth${5 - d}-i${blocks[5 - d].length - 1}`} className="TileRow__flex-block">
+                    {blocks[6 - d]}
+                  </div>,
+                );
+                blocks[6 - d] = [];
+              }
+            }
+
+            blocks[5].push(
+              <TileCheck
+                tile={tile}
+                second={i % 2 === 1}
+                isChecked={isChecked}
+                key={`${tile.name}${i % 2 ? '-second' : ''}`}
+                tileN={i}
+                onCheck={onCheck}
+                onCheckByKey={onCheckByKey}
+              />,
+            );
+
+            addToBlocks(5);
+            return blocks;
+          }, [...new Array(6)].map(() => []))[0]
+        }
       </div>
     );
   }
