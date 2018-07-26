@@ -33,7 +33,7 @@ export default class TilesRow extends PureComponent {
               }
               if ((i + 1) % 2 ** d === 0) {
                 blocks[5 - d].push(
-                  <div key={`depth${5 - d}-i${blocks[5 - d].length - 1}`} className="TileRow__flex-block">
+                  <div key={`depth${5 - d}-i${blocks[5 - d].length}`} className="TileRow__flex-block">
                     {blocks[6 - d]}
                   </div>,
                 );

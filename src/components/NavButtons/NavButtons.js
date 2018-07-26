@@ -16,7 +16,6 @@ export default class NavButtons extends PureComponent {
       <nav className="NavButtons">
         <button
           type="button"
-          id="NavButtons__menu-button--HW"
           className={`NavButtons__menu-button${
             activeSection === constants.HOUSE_WAY_SEC ? ' NavButtons__menu-button--active' : ''
           }`}
@@ -28,19 +27,17 @@ export default class NavButtons extends PureComponent {
         </button>
         <button
           type="button"
-          id="NavButtons__menu-button--PGL"
           className={`NavButtons__menu-button${
-            activeSection === constants.PAI_GOW_LAG_SEC ? ' NavButtons__menu-button--active' : ''
+            activeSection === constants.PAI_GOW_LAB_SEC ? ' NavButtons__menu-button--active' : ''
           }`}
           tabIndex="0"
-          section={constants.PAI_GOW_LAG_SEC}
+          section={constants.PAI_GOW_LAB_SEC}
           onClick={onCheck}
         >
           {'Pai Gow Lab'}
         </button>
         <button
           type="button"
-          id="NavButtons__menu-button--play"
           className={`NavButtons__menu-button${
             activeSection === constants.GAMEPLAY_SEC ? ' NavButtons__menu-button--active' : ''
           }`}
