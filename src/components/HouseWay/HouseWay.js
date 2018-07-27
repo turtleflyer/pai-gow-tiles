@@ -29,11 +29,11 @@ export default class HouseWay extends PureComponent {
       let renewedSetOfTiles;
       const entry = setOfTiles[tileN];
       if (entry.isChecked || tilesToSet.length < 4) {
-        renewedTilesToSet = [...tilesToSet];
         renewedSetOfTiles = [...setOfTiles];
         if (entry.isChecked) {
-          renewedTilesToSet = renewedTilesToSet.filter(tile => tile.n !== tileN);
+          renewedTilesToSet = tilesToSet.filter(tile => tile.n !== tileN);
         } else {
+          renewedTilesToSet = [...tilesToSet];
           renewedTilesToSet.push({ n: tileN, tile: entry.tile, second: tileN % 2 === 1 });
         }
         renewedSetOfTiles[tileN].isChecked = !renewedSetOfTiles[tileN].isChecked;

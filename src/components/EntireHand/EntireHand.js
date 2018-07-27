@@ -31,10 +31,35 @@ export default class EntireHand extends PureComponent {
     const tiles = [lowHand.lowTile, lowHand.highTile, highHand.lowTile, highHand.highTile];
     let tilesFaces;
     if (tilesToSet) {
-      tilesFaces = new Map(tilesToSet.map(({ tile, second }) => [tile, second]));
+      tilesFaces = tilesToSet.reduce((resMap, { tile, second }) => {
+        if (resMap.has(tile)) {
+          resMap.set(tile, { both: true });
+        } else {
+          resMap.set(tile, { second });
+        }
+        return resMap;
+      }, new Map());
+    } else {
+      tilesFaces = tiles.reduce((resMap, tile) => {
+        if (resMap.has(tile)) {
+          resMap.set(tile, { both: true });
+        } else {
+          resMap.set(tile, { second: false });
+        }
+        return resMap;
+      }, new Map());
     }
 
-    return tilesToSet ? (
+    function getFace(i) {
+      const faceDescription = tilesFaces.get(tiles[i]);
+      if (faceDescription.both) {
+        tilesFaces.set(tiles[i], { second: true });
+        return false;
+      }
+      return faceDescription.second;
+    }
+
+    return (
       <div className="EntireHand EntireHand--medium-size">
         <div
           className={`EntireHand__straight-part${
@@ -42,10 +67,10 @@ export default class EntireHand extends PureComponent {
           }`}
         >
           <div className="EntireHand__tile0">
-            <Tile tile={tiles[0]} second={tilesFaces.get(tiles[0])} />
+            <Tile tile={tiles[0]} second={getFace(0)} />
           </div>
           <div className="EntireHand__tile1">
-            <Tile tile={tiles[1]} second={tilesFaces.get(tiles[1])} />
+            <Tile tile={tiles[1]} second={getFace(1)} />
           </div>
         </div>
         <div
@@ -54,41 +79,10 @@ export default class EntireHand extends PureComponent {
           }`}
         >
           <div className="EntireHand__tile2">
-            <Tile tile={tiles[2]} second={tilesFaces.get(tiles[2])} rotated />
+            <Tile tile={tiles[2]} second={getFace(2)} rotated />
           </div>
           <div className="EntireHand__tile3">
-            <Tile tile={tiles[3]} second={tilesFaces.get(tiles[3])} rotated />
-          </div>
-        </div>
-      </div>
-    ) : (
-      <div className="EntireHand EntireHand--medium-size">
-        <div
-          className={`EntireHand__straight-part${
-            mirrored ? ' EntireHand__straight-part--mirrored' : ''
-          }`}
-        >
-          <div className="EntireHand__tile0">
-            <Tile tile={tiles[0]} />
-          </div>
-          <div className="EntireHand__tile1">
-            <Tile tile={tiles[1]} second={tiles[1] === tiles[0]} />
-          </div>
-        </div>
-        <div
-          className={`EntireHand__rotated-part${
-            mirrored ? ' EntireHand__rotated-part--mirrored' : ''
-          }`}
-        >
-          <div className="EntireHand__tile2">
-            <Tile tile={tiles[2]} second={tiles[2] === tiles[0] || tiles[2] === tiles[1]} rotated />
-          </div>
-          <div className="EntireHand__tile3">
-            <Tile
-              tile={tiles[3]}
-              second={tiles[3] === tiles[0] || tiles[3] === tiles[1] || tiles[3] === tiles[2]}
-              rotated
-            />
+            <Tile tile={tiles[3]} second={getFace(3)} rotated />
           </div>
         </div>
       </div>
