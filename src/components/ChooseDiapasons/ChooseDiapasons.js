@@ -9,9 +9,21 @@ export default class ChooseDiapasons extends PureComponent {
   render() {
     return (
       <div>
+        <p>
+          {'Diapason of first tile:'}
+        </p>
         <InputDiapason />
+        <p>
+          {'Diapason of second tile:'}
+        </p>
         <InputDiapason />
+        <p>
+          {'Diapason of third tile:'}
+        </p>
         <InputDiapason />
+        <p>
+          {'Diapason of fourth tile:'}
+        </p>
         <InputDiapason />
       </div>
     );

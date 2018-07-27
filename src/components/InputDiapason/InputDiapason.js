@@ -9,9 +9,6 @@ export default class InputDiapason extends PureComponent {
   render() {
     return (
       <div>
-        <p>
-          {'Diapason of first tile:'}
-        </p>
         <ArrowDown />
         <input />
       </div>
