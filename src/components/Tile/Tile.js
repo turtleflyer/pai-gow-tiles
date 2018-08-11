@@ -48,19 +48,19 @@ export default class Tile extends PureComponent {
   static propTypes = {
     tile: PropTypes.instanceOf(PGTile).isRequired,
     second: PropTypes.bool,
-    tileN: PropTypes.number,
+    // tileN: PropTypes.number,
   };
 
   static defaultProps = {
     second: false,
-    tileN: null,
+    // tileN: null,
   };
 
   render() {
-    const { tile, second, tileN } = this.props;
+    const { tile, second } = this.props;
     return (
       <img
-        tile-n={tileN}
+        // tile-n={tileN}
         className="Tile"
         src={second ? getTileImg(tile).second : getTileImg(tile).prime}
         alt="tile"

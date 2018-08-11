@@ -1,5 +1,5 @@
 .EntireHand--medium-size {
-  --height: 6rem;
+  --height: var(--base-size);
 }
 
 .EntireHand {

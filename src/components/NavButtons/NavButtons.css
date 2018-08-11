@@ -1,6 +1,6 @@
 .NavButtons {
   display: flex;
-  margin: 2rem 1rem 1rem;
+  margin: 2rem 0 1rem;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -8,7 +8,7 @@
 .NavButtons__menu-button {
   display: block;
   flex-shrink: 0;
-  background-color: darkgoldenrod;
+  background-color: black;
   color: white;
   border: solid white;
   border-width: 0 2px 2px;
@@ -18,11 +18,11 @@
 .NavButtons__menu-button--active {
   flex-shrink: 0;
   background-color: white;
-  color: darkgoldenrod;
+  color: black;
 }
 
 .NavButtons__menu-button:hover,
 .NavButtons__menu-button:focus {
   outline: 0;
-  border-bottom: 2px solid darkgoldenrod;
+  border-bottom: 2px solid black;
 }

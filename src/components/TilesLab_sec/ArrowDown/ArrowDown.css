@@ -1,0 +1,11 @@
+.ArrowDown {
+  position: absolute;
+  top: 15%;
+  left:85%;
+  width: 0;
+  height: 0;
+  border-left: calc(var(--height-input) * 0.7) solid transparent;
+  border-right: calc(var(--height-input) * 0.7) solid transparent;
+  border-top: calc(var(--height-input) * 0.7) solid rgb(44, 18, 14);
+  z-index: 100;
+}

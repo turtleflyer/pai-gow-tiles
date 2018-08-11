@@ -1,5 +1,5 @@
 .TileCheck {
-  --height: 6rem;
+  --height: var(--base-size);
   position: relative;
   height: var(--height);
   width: calc(var(--height) * 0.36);

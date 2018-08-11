@@ -1,0 +1,44 @@
+.Dropdown {
+  width: calc(var(--base-size)) !important;
+  height: calc(var(--base-size) * 2.5) !important;
+  border: 1px solid black;
+  border-radius: calc(var(--base-size) * 0.04);
+  /* overflow-y: scroll; */
+}
+
+.Dropdown__vertical-scroll-track {
+  background-color: rgb(78, 78, 78);
+  border-radius: 3px;
+}
+
+.Dropdown__list_entry {
+  height: calc(var(--base-size) * 0.5);
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  padding: calc(var(--base-size) * 0.1) 0;
+}
+
+.Dropdown__list_entry--checked {
+  background-color: rgb(156, 156, 156);
+}
+
+.Dropdown__list_entry:focus {
+  outline: 0;
+  background: linear-gradient(
+    to right,
+    rgb(255, 255, 255) 20%,
+    rgb(210, 210, 210) 45%,
+    rgb(210, 210, 210) 55%,
+    rgb(255, 255, 255) 80%
+  );
+}
+
+.Dropdown__list_entry--checked:focus {
+  background: linear-gradient(
+    to right,
+    rgb(156, 156, 156) 20%,
+    rgb(190, 190, 190) 50%,
+    rgb(156, 156, 156) 80%
+  );
+}

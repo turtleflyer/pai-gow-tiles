@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Tile from '../Tile/Tile';
-import { PGTile } from '../../../paigow/paigow';
+import Tile from '../../Tile/Tile';
+import { PGTile } from '../../../../paigow/paigow';
 import './TileCheck.css';
 import checkMark from './check-shadow.png';
 
@@ -12,7 +12,6 @@ export default class TileCheck extends PureComponent {
     isChecked: PropTypes.bool,
     onCheck: PropTypes.func.isRequired,
     onCheckByKey: PropTypes.func.isRequired,
-    tileN: PropTypes.number.isRequired,
   };
 
   static defaultProps = {
@@ -22,18 +21,18 @@ export default class TileCheck extends PureComponent {
 
   render() {
     const {
-      tile, isChecked, second, onCheck, onCheckByKey, tileN,
+      tile, isChecked, second, onCheck, onCheckByKey,
     } = this.props;
     return (
       <div
+        ref={node => (this.node = node)}
         className={`TileCheck${isChecked ? ' TileCheck--checked' : ''}`}
         onClick={onCheck}
         role="button"
         tabIndex="0"
         onKeyDown={onCheckByKey}
-        tile-n={tileN}
       >
-        <Tile tile={tile} second={second} tileN={tileN} />
+        <Tile tile={tile} second={second} />
         {isChecked ? <img className="TileCheck__check-mark" src={checkMark} alt="checked" /> : null}
       </div>
     );

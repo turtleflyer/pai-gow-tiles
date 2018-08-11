@@ -6,6 +6,7 @@ export default class MultiHands extends PureComponent {
   static propTypes = {};
 
   render() {
+    const { stateOfTiles } = this.props;
     return <div />;
   }
 }

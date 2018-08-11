@@ -1,0 +1,33 @@
+.InputDiapason {
+  position: relative;
+  border: 1px solid rgb(44, 18, 14);
+  width: calc(var(--height-input) * 10);
+  height: var(--height-input);
+  z-index: 70;
+}
+
+.InputDiapason__input-field {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  border: 0;
+  width: 80%;
+  height: 100%;
+  z-index: 80;
+}
+
+.InputDiapason__input-field:focus {
+  outline: none;
+}
+
+.InputDiapason__arrow-down {
+  position: absolute;
+  top: 15%;
+  left:85%;
+  width: 0;
+  height: 0;
+  border-left: calc(var(--height-input) * 0.7) solid transparent;
+  border-right: calc(var(--height-input) * 0.7) solid transparent;
+  border-top: calc(var(--height-input) * 0.7) solid rgb(44, 18, 14);
+  z-index: 100;
+}

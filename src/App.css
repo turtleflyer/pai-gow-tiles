@@ -1,6 +1,11 @@
+:root {
+  --base-size: 6rem;
+  --height-input: 1.5rem;
+}
+
 .App {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column nowrap;
   justify-content: center;
   position: relative;
   margin: 0 auto;

@@ -1,9 +1,10 @@
 /* eslint-env browser */
 import React, { PureComponent } from 'react';
-import HouseWay from './components/HouseWay/HouseWay';
+import HouseWay from './components/HouseWay_sec/HouseWay/HouseWay';
 import NavButtons from './components/NavButtons/NavButtons';
 import constants from './constants';
-import TilesLab from './components/TilesLab/TilesLab';
+import TilesLab from './components/TilesLab_sec/TilesLab/TilesLab';
+import './App.css';
 
 export default class App extends PureComponent {
   constructor() {
