@@ -6,6 +6,7 @@ import MultiHands from '../MultiHands/MultiHands';
 import Dropdown from '../Dropdown/Dropdown';
 import { paiGow } from '../../../../paigow/paigow';
 import Tile from '../../Tile/Tile';
+import InputDiapason from '../InputDiapason/InputDiapason';
 
 const { getTile } = paiGow;
 
@@ -28,23 +29,11 @@ export default class TilesLab extends PureComponent {
     const { stateOfTiles } = this.state;
     const tileInSequence = 0;
     return (
-      <Dropdown checkTile={this.checkTile}>
-        {stateOfTiles[tileInSequence].map(({ tile, isChecked }, i) => {
-          const ref = React.createRef();
-          return (
-            <div
-              ref={ref}
-              className={`Dropdown__list_entry${isChecked ? ' Dropdown__list_entry--checked' : ''}`}
-              key={tile.name}
-              role="checkbox"
-              tabIndex="0"
-            >
-              <Tile tile={tile} tilesIndexAttribute={i} />
-              {' '}
-            </div>
-          );
-        })}
-      </Dropdown>
+      <InputDiapason
+        checkTile={this.checkTile}
+        stateOfTiles={stateOfTiles}
+        tileInSequence={tileInSequence}
+      />
     );
   }
 }

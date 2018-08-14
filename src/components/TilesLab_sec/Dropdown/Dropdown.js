@@ -23,7 +23,7 @@ export default class Dropdown extends PureComponent {
     switch (eventObj.key) {
       case ' ':
         eventObj.preventDefault();
-        checkTile(0, index);
+        checkTile(index);
         break;
 
       case 'ArrowDown':
@@ -46,7 +46,7 @@ export default class Dropdown extends PureComponent {
   render() {
     const { children, checkTile } = this.props;
     this.clonedChildren = Children.map(children, (child, i) => cloneElement(child, {
-      onClick: () => checkTile(0, i),
+      onClick: () => checkTile(i),
       onKeyDown: e => this.checkTileByKey(i, e),
     }));
 
