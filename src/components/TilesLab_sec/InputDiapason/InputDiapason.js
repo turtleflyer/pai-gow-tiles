@@ -25,27 +25,28 @@ export default class InputDiapason extends PureComponent {
             this.setState({ showDropdown: !showDropdown });
           }}
         />
-        {'djsljsl'}
         {showDropdown ? (
-          <Dropdown checkTile={i => checkTile(tileInSequence, i)}>
-            {stateOfTiles[tileInSequence].map(({ tile, isChecked }, i) => {
-              const ref = React.createRef();
-              return (
-                <div
-                  ref={ref}
-                  className={`Dropdown__list_entry${
-                    isChecked ? ' Dropdown__list_entry--checked' : ''
-                  }`}
-                  key={tile.name}
-                  role="checkbox"
-                  tabIndex="0"
-                >
-                  <Tile tile={tile} tilesIndexAttribute={i} />
-                  {' '}
-                </div>
-              );
-            })}
-          </Dropdown>
+          <div className="InputDiapason__dropbox">
+            <Dropdown checkTile={i => checkTile(tileInSequence, i)}>
+              {stateOfTiles[tileInSequence].map(({ tile, isChecked }, i) => {
+                const ref = React.createRef();
+                return (
+                  <div
+                    ref={ref}
+                    className={`Dropdown__list_entry${
+                      isChecked ? ' Dropdown__list_entry--checked' : ''
+                    }`}
+                    key={tile.name}
+                    role="checkbox"
+                    tabIndex="0"
+                  >
+                    <Tile tile={tile} tilesIndexAttribute={i} />
+                    {' '}
+                  </div>
+                );
+              })}
+            </Dropdown>
+          </div>
         ) : null}
       </div>
     );

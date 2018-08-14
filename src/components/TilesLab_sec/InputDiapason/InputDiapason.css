@@ -22,12 +22,23 @@
 
 .InputDiapason__arrow-down {
   position: absolute;
-  top: 15%;
-  left:85%;
+  top: 25%;
+  left: 91%;
   width: 0;
   height: 0;
-  border-left: calc(var(--height-input) * 0.7) solid transparent;
-  border-right: calc(var(--height-input) * 0.7) solid transparent;
-  border-top: calc(var(--height-input) * 0.7) solid rgb(44, 18, 14);
+  border-left: calc(var(--height-input) * 0.4) solid transparent;
+  border-right: calc(var(--height-input) * 0.4) solid transparent;
+  border-top: calc(var(--height-input) * 0.4) solid rgb(44, 18, 14);
+  z-index: 80;
+}
+
+.InputDiapason__dropbox {
+  position: absolute;
+  right: 5%;
+  top: 85%;
   z-index: 100;
+}
+
+.InputDiapason__dropbox > div {
+  background-color: white;
 }
