@@ -1,14 +1,17 @@
 import React, {
-  PureComponent, Children, cloneElement, createRef,
+  PureComponent, Children, cloneElement,
 } from 'react';
 import PropTypes from 'prop-types';
 import './Dropdown.css';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 export default class Dropdown extends PureComponent {
-  static propTypes = {};
-
   childNodes = [];
+
+  static propTypes = {
+    children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
+    checkTile: PropTypes.func.isRequired,
+  };
 
   componentDidMount = () => {
     const { children } = this.props;

@@ -3,9 +3,21 @@ import PropTypes from 'prop-types';
 import './InputDiapason.css';
 import Dropdown from '../Dropdown/Dropdown';
 import Tile from '../../Tile/Tile';
+import { PGTile } from '../../../../paigow/paigow';
 
 export default class InputDiapason extends PureComponent {
-  static propTypes = {};
+  static propTypes = {
+    stateOfTiles: PropTypes.arrayOf(
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          tile: PropTypes.instanceOf(PGTile).isRequired,
+          isChecked: PropTypes.bool.isRequired,
+        }).isRequired,
+      ).isRequired,
+    ).isRequired,
+    tileInSequence: PropTypes.oneOf([0, 1, 2, 3]).isRequired,
+    checkTile: PropTypes.func.isRequired,
+  };
 
   state = {
     showDropdown: false,
@@ -20,10 +32,14 @@ export default class InputDiapason extends PureComponent {
         <div
           className="InputDiapason__arrow-down"
           onClick={() => {
-            console.log('fired');
-            console.log(showDropdown);
             this.setState({ showDropdown: !showDropdown });
           }}
+          onKeyDown={(e) => {
+            e.preventDefault();
+            this.setState({ showDropdown: !showDropdown });
+          }}
+          role="button"
+          tabIndex="0"
         />
         {showDropdown ? (
           <div className="InputDiapason__dropbox">
@@ -39,6 +55,8 @@ export default class InputDiapason extends PureComponent {
                     key={tile.name}
                     role="checkbox"
                     tabIndex="0"
+                    aria-checked={isChecked}
+                    aria-labelledby="choose tile"
                   >
                     <Tile tile={tile} tilesIndexAttribute={i} />
                     {' '}
