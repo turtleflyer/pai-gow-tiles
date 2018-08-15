@@ -1,12 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import './TilesLab.css';
-import ChooseDiapasons from '../ChooseDiapasons/ChooseDiapasons';
-import MultiHands from '../MultiHands/MultiHands';
-import Dropdown from '../Dropdown/Dropdown';
-import { paiGow } from '../../../../paigow/paigow';
-import Tile from '../../Tile/Tile';
-import InputDiapason from '../InputDiapason/InputDiapason';
+// import ChooseDiapasons from '../ChooseDiapasons/ChooseDiapasons';
+// import MultiHands from '../MultiHands/MultiHands';
+import { paiGow } from '../../../paigow/paigow';
+import InputDiapason from './ChooseDiapasons/InputDiapason/InputDiapason';
 
 const { getTile } = paiGow;
 

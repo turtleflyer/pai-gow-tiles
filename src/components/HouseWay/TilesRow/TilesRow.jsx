@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { PGTile } from '../../../../paigow/paigow';
-import TileCheck from '../TIleCheck/TileCheck';
+import TileCheck from './TIleCheck/TileCheck';
 import './TilesRow.css';
 
 export default class TilesRow extends PureComponent {

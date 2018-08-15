@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import './InputDiapason.css';
-import Dropdown from '../Dropdown/Dropdown';
-import Tile from '../../Tile/Tile';
-import { PGTile } from '../../../../paigow/paigow';
+import Dropdown from './Dropdown/Dropdown';
+import Tile from '../../../Tile/Tile';
+import { PGTile } from '../../../../../paigow/paigow';
 
 export default class InputDiapason extends PureComponent {
   static propTypes = {

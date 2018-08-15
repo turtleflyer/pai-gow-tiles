@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import TilesRow from '../TilesRow/TilesRow';
-import { paiGow } from '../../../../paigow/paigow';
-import EntireHand from '../../EntireHand/EntireHand';
+import TilesRow from './TilesRow/TilesRow';
+import { paiGow } from '../../../paigow/paigow';
+import EntireHand from '../EntireHand/EntireHand';
 import './HouseWay.css';
 
 const { getTile, houseWay } = paiGow;

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Tile from '../../Tile/Tile';
-import { PGTile } from '../../../../paigow/paigow';
+import Tile from '../../../Tile/Tile';
+import { PGTile } from '../../../../../paigow/paigow';
 import './TileCheck.css';
 import checkMark from './check-shadow.png';
 
