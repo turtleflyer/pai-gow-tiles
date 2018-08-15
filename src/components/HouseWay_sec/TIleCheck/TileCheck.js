@@ -28,7 +28,9 @@ export default class TileCheck extends PureComponent {
         ref={node => (this.node = node)}
         className={`TileCheck${isChecked ? ' TileCheck--checked' : ''}`}
         onClick={onCheck}
-        role="button"
+        role="checkbox"
+        aria-checked={isChecked}
+        aria-labelledby="choose tile"
         tabIndex="0"
         onKeyDown={onCheckByKey}
       >
