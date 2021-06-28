@@ -5,6 +5,7 @@ import NavButtons from './components/NavButtons/NavButtons';
 import constants from './constants';
 import TilesLab from './components/TilesLab_sec/TilesLab/TilesLab';
 import './App.css';
+import { UnderConstruction } from './UnderConstruction';
 
 export default class App extends PureComponent {
   constructor() {
@@ -27,8 +28,8 @@ export default class App extends PureComponent {
       <div className="App">
         <NavButtons activeSection={activeSection} onCheck={this.switchSection} />
         {activeSection === constants.HOUSE_WAY_SEC ? <HouseWay /> : null}
-        {activeSection === constants.PAI_GOW_LAB_SEC ? <TilesLab /> : null}
-        {activeSection === constants.GAMEPLAY_SEC ? <HouseWay /> : null}
+        {activeSection === constants.PAI_GOW_LAB_SEC ? <UnderConstruction /> : null}
+        {activeSection === constants.GAMEPLAY_SEC ? <UnderConstruction /> : null}
       </div>
     );
   }
